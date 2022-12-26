@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const route = Router();
 const CategoryModel = require("../models/category");
+const GalleryModel = require("../models/gallery");
 
 route.get("/add-category/:categoryName", async (req, res, next) => {
   try {
