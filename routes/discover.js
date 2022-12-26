@@ -10,8 +10,8 @@ route.get("/discover/:category", async (req, res, next) => {
       res.status(400).send("Bad Request");
     }
     const galleryDetails = await GalleryModel.find({
-      category: { $in: [category] },
-    });
+        category: { $in: [category] }
+    }).limit(4);
 
     res.json(galleryDetails);
   } catch (error) {
