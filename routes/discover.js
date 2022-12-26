@@ -6,11 +6,18 @@ const GalleryModel = require("../models/gallery");
 route.get("/discover/:category", async (req, res, next) => {
   try {
     const category = req.params.category;
+    const filterByLike = req.query.filterByLike;
     if (!category) {
       res.status(400).send("Bad Request");
     }
+
+    let filter = {};
+    if (filterByLike) {
+        filter = { likes: 1 };
+    }
     const galleryDetails = await GalleryModel.find({
-        category: { $in: [category] }
+        category: { $in: [category] },
+        ...filter
     }).limit(4);
 
     res.json(galleryDetails);
