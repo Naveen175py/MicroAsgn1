@@ -34,7 +34,7 @@ route.get("/like/:imageId", async (req, res, next) => {
   }
 });
 
-route.get("/discover/:category", async (req, res, next) => {
+route.get("/discover/:category/:shuffle", async (req, res, next) => {
   try {
     const category = req.params.category;
     const shuffle = req.params.shuffle;
