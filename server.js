@@ -11,6 +11,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/admin", admin);
 
 app.use((err, req, res, next) => res.status(500).send("Something went wrong! Please try after some time."));
+app.use((req, res, next) => res.status(404).send("You are looking for something that we not have! Route not found"));
 
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || "localhost";
